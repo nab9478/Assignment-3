@@ -53,16 +53,11 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send message data.
     # Fill in start
-    msg = mailFrom
-    msg += rcptTo
-    msg += data
-    msg += "this is my email message I sent through Python!\r\n"
     clientSocket.send(msg.encode())
     # Fill in end
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in start
-    endmsg = "."
     clientSocket.send(endmsg.encode())
     recv5 = clientSocket.recv(1024).decode()
     #print(recv5)
